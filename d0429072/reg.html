@@ -1,0 +1,176 @@
+<html>
+ <head>
+  <title></title>
+  <style>
+	
+	body {
+		background-image:url('2015102020040601.jpg');
+		margin:0px;
+		padding:0px;
+		font-family:"Goudy Old Style",Times,serif;
+	}
+	/*	Type I
+	*/
+	
+	#body {
+		margin:5% 10%;
+		height:80%;
+		width:80%;
+	}
+	
+	#body div {
+		height:100%;
+		width:50%;
+	}
+	
+	#one {
+		background-image:url('72625111.jpg');
+		background-repeat:no-repeat;
+		background-size: 100% 100%;
+		background-color:blue;
+		float:left;
+	}
+	
+	#two {
+		background-color:white;
+		float:right;
+	}
+	#three{
+
+		margin:5% 20%;
+		height:80%;
+		width:50%;
+		/*margin-bottom: 22px;*/
+	}
+	#three h1 {
+		font-family:"Kozuka Mincho Pro B",Times,serif;
+		font-size:50px;
+		margin-bottom: 50px;
+		margin:15% 20%;
+	}
+	input {
+		width: 300;
+		height: 30;
+	}
+	input[type="submit"]{
+		font-family:"Bradley Hand ITC",Times,serif;
+		margin-top: 30px;
+		width: 150px
+	}
+	#three #warning {
+		height: 20px;
+	}
+
+		
+  </style>
+  <script>
+
+
+  	function checkLength(){
+
+  		len = document.getElementById("username").value.length;
+
+  		if(len>=6)
+  			alert("ok");
+  		else
+  			alert("need more text");
+  	}
+
+  	function checkKeyup(type){
+
+  		if(type == 0){
+
+  			len = document.getElementById("username").value.length;
+
+	  		if(len>=6){
+	  			document.getElementById("warning").innerHTML = "ok";
+	  			document.getElementById("warning").style.color="white";
+	  		}
+	  		else{
+	  			document.getElementById("warning").innerHTML = "need more text";
+	  			document.getElementById("warning").style.color="red";
+	  		}
+  		}
+  		else if(type == 1){
+
+  			len = document.getElementById("password").value.length;
+
+	  		if(len>=6){
+	  			document.getElementById("warning").innerHTML = "ok";
+	  			document.getElementById("warning").style.color="black";
+	  		}
+	  		else{
+	  			document.getElementById("warning").innerHTML = "need more text";
+	  			document.getElementById("warning").style.color="red";
+	  		}
+
+  		}
+  		else{
+
+  			var str =document.getElementById("email").value;
+			var n=str.indexOf("@");
+			var n2=str.indexOf(".");
+
+		if(n== -1 || n2 == -1){
+
+			document.getElementById("warning").innerHTML = "keyin wrong";
+		}
+		else{
+
+			document.getElementById("warning").innerHTML = "email ok";
+		}
+  	}
+ 
+ 	}
+ 
+
+</script>
+ </head>
+ <body>
+  
+  <div id="body">
+   <div id="one"></div>
+   <div id="two">
+   		<div id="three">
+   			<h1>Register</h1>
+		
+		<form method="get">
+		<table>
+			<tr>
+				<td>User Name</td>
+			</tr>
+			
+			<tr>
+				<td><input type="text" name="username" id="username" method="post" placeholder="Input your username" onkeyup="checkKeyup(0)"></tr></td>
+			<tr>
+				<td>Password</td>
+			</tr>
+			<tr>
+				<td><input type="password" name="password" id="password" placeholder="Input your password" onkeyup="checkKeyup(1)"></td>
+			</tr>
+			<tr>
+				<td>E-mail</td>
+			</tr>
+			<tr>
+				<td><input type="email" name="email" id="email" placeholder="Input your e-mail" onkeyup="checkKeyup(2)"></td>
+			</tr>
+			<tr>
+				<td>BirthDay</td>
+			</tr>
+			<tr>
+				<td ><input type="date" name="birthDay"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Register" onclick="checkLength() "></td>
+			</tr>
+		</table>
+		
+		</form>
+		   		<div id="warning"></div>
+   		</div>
+   		
+   </div>
+  </div>
+  
+ </body>
+</html>
