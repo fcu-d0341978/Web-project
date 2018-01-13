@@ -64,8 +64,26 @@
 		
   </style>
   <script>
-
-
+	//check username
+	function checkUser()
+	{
+		xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function(){
+			str = xmlhttp.responseText;
+			
+			if(str == "ok"){
+				document.getElementById("checkUnm").innerHTML = "ok!!!!!!!";
+			}
+			else{
+				document.getElementById("checkUnm").innerHTML = "this is areally use!!!!!";
+			}
+		
+		}
+		xmlhttp.open("GET","check_user.php?customer_name="+document.getElementById("username").value,true);
+		xmlhttp.send();
+	}
+	
+	//
   	function checkLength(){
 
   		len = document.getElementById("username").value.length;
@@ -133,7 +151,10 @@
    <div id="two">
    		<div id="three">
    			<h1>Register</h1>
-		
+			
+			
+			
+			<div id="checkUnm"></div>
 		<form action="reg.php" method="post">
 		<table>
 			<tr>
