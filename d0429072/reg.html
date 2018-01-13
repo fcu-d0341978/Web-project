@@ -48,6 +48,10 @@
 		margin-bottom: 50px;
 		margin:15% 20%;
 	}
+	#three #checkUnm{
+		height:20px;
+		width:100%;
+	}
 	input {
 		width: 300;
 		height: 30;
@@ -69,17 +73,22 @@
 	{
 		xmlhttp = new XMLHttpRequest();
 		xmlhttp.onreadystatechange = function(){
-			str = xmlhttp.responseText;
-			
-			if(str == "ok"){
-				document.getElementById("checkUnm").innerHTML = "ok!!!!!!!";
-			}
-			else{
-				document.getElementById("checkUnm").innerHTML = "this is areally use!!!!!";
-			}
+			if(xmlhttp.readyState == 4 && xmlhttp.status==200){
+				str = xmlhttp.responseText;
+				
+				if(str == "ok"){
+					document.getElementById("checkUnm").innerHTML = "this is alreally use!!!!!";
+				}
+				else{
+					document.getElementById("checkUnm").innerHTML = "ok!!";
+				}
+				//document.getElementById("checkUnm").innerHTML = str;
 		
+			}
+			
+
 		}
-		xmlhttp.open("GET","check_user.php?customer_name="+document.getElementById("username").value,true);
+		xmlhttp.open("GET","check_user.php?username="+document.getElementById("username").value,true);
 		xmlhttp.send();
 	}
 	
@@ -162,7 +171,7 @@
 			</tr>
 			
 			<tr>
-				<td><input type="text" name="username" id="username"  placeholder="Input your username" onkeyup="checkKeyup(0)"></tr></td>
+				<td><input type="text" name="username" id="username"  placeholder="Input your username" onkeyup="checkKeyup(0);checkUser()"></tr></td>
 			<tr>
 				<td>Password</td>
 			</tr>
